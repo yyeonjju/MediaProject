@@ -13,10 +13,36 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let window = self.window else { return }
+        
+        //⭐️ 네비게이션 컨트롤러 생성
+        let movieHomeView = UINavigationController(rootViewController: MovieHomeViewController())
+        let signup = UINavigationController(rootViewController: SignupViewController())
+
+        
+        
+//        homeView.navigationBar.backgroundColor = .yellow
+        
+        
+        //⭐️ 탭바 컨트롤러 생성
+        let tabBarVC = UITabBarController()
+        
+        // 탭바로 사용하기 위한 뷰 컨트롤러들 설정
+        tabBarVC.setViewControllers([movieHomeView,signup], animated: true)
+        tabBarVC.modalPresentationStyle = .fullScreen
+        tabBarVC.tabBar.backgroundColor = .white
+        
+        // 탭바 이름/이미지 설정 (이미지는 애플이 제공하는 것으로 사용)
+        guard let items = tabBarVC.tabBar.items else { return }
+        
+        items[0].title = "Home"
+        items[0].image = UIImage(systemName: "house")
+        
+        items[1].title = "signup"
+        items[1].image = UIImage(systemName: "person.fill")
+
+        
+        window.rootViewController = tabBarVC
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

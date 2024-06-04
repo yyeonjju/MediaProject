@@ -103,7 +103,7 @@ class MovieHomeViewController: UIViewController {
             make.horizontalEdges.equalToSuperview().inset(20)
             make.top.equalTo(view.safeAreaLayoutGuide).offset(30)
             make.centerX.equalTo(view)
-            make.height.equalTo(500)
+            make.height.equalTo(450)
         }
         
         firstContentImage.snp.makeConstraints { make in
@@ -119,9 +119,9 @@ class MovieHomeViewController: UIViewController {
         }
         
         imageStackView.snp.makeConstraints { make in
-            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
+            make.horizontalEdges.equalTo(view).inset(20)
             make.top.equalTo(mainImageView.snp.bottom).offset(10)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(10)
+            make.bottom.equalTo(view).offset(10)
         }
         
         
