@@ -22,10 +22,7 @@ final class SignupTextField : UITextField {
     private func setupUI (placeholer : String) {
         self.backgroundColor = .gray
         self.layer.cornerRadius = 5
-        
-        let centeredParagraphStyle = NSMutableParagraphStyle()
-        centeredParagraphStyle.alignment = .center
-        self.attributedPlaceholder = NSAttributedString(string: placeholer, attributes: [.foregroundColor : UIColor.white, .paragraphStyle: centeredParagraphStyle])
+        self.configurePlaceholderColor(placeholer, .white)
         
     }
     

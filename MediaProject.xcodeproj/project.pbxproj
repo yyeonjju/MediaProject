@@ -23,6 +23,12 @@
 		7D9B9F3F2C11739A002C577B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7D9B9F3E2C11739A002C577B /* .gitignore */; };
 		7D9B9F422C117478002C577B /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9B9F412C117478002C577B /* APIKey.swift */; };
 		7D9B9F442C11748C002C577B /* APIURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9B9F432C11748C002C577B /* APIURL.swift */; };
+		7D9B9F482C1193E6002C577B /* LotteryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9B9F472C1193E6002C577B /* LotteryViewController.swift */; };
+		7D9B9F4A2C119430002C577B /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9B9F492C119430002C577B /* UITextField+Extension.swift */; };
+		7D9B9F4C2C1199FA002C577B /* LotteryViewController+Picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9B9F4B2C1199FA002C577B /* LotteryViewController+Picker.swift */; };
+		7D9B9F4F2C11CCFF002C577B /* APIFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9B9F4E2C11CCFF002C577B /* APIFetcher.swift */; };
+		7D9B9F522C11CD6C002C577B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 7D9B9F512C11CD6C002C577B /* Alamofire */; };
+		7D9B9F552C11D121002C577B /* Lotto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9B9F542C11D121002C577B /* Lotto.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +49,11 @@
 		7D9B9F3E2C11739A002C577B /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		7D9B9F412C117478002C577B /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		7D9B9F432C11748C002C577B /* APIURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIURL.swift; sourceTree = "<group>"; };
+		7D9B9F472C1193E6002C577B /* LotteryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryViewController.swift; sourceTree = "<group>"; };
+		7D9B9F492C119430002C577B /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		7D9B9F4B2C1199FA002C577B /* LotteryViewController+Picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LotteryViewController+Picker.swift"; sourceTree = "<group>"; };
+		7D9B9F4E2C11CCFF002C577B /* APIFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIFetcher.swift; sourceTree = "<group>"; };
+		7D9B9F542C11D121002C577B /* Lotto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lotto.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +62,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D9B9F032C0F03A8002C577B /* SnapKit in Frameworks */,
+				7D9B9F522C11CD6C002C577B /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +89,7 @@
 		7D9B9EDA2C0EFD3B002C577B /* MediaProject */ = {
 			isa = PBXGroup;
 			children = (
+				7D9B9F4D2C11CC19002C577B /* Networking */,
 				7D9B9F402C117446002C577B /* API */,
 				7D9B9EF92C0F0051002C577B /* Extension */,
 				7D9B9EF02C0EFF0E002C577B /* Components */,
@@ -95,6 +108,7 @@
 		7D9B9EEF2C0EFEFD002C577B /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				7D9B9F452C1193A8002C577B /* Lottery */,
 				7D9B9EF22C0EFFB9002C577B /* MovieHome */,
 				7D9B9EF12C0EFF2F002C577B /* Signup */,
 			);
@@ -147,6 +161,7 @@
 				7D9B9EFA2C0F0068002C577B /* ViewController+Extension.swift */,
 				7D9B9F042C0F1DCE002C577B /* UIImageView+Extension.swift */,
 				7D9B9F062C0F37AC002C577B /* UIButton+Extension.swift */,
+				7D9B9F492C119430002C577B /* UITextField+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -168,6 +183,40 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		7D9B9F452C1193A8002C577B /* Lottery */ = {
+			isa = PBXGroup;
+			children = (
+				7D9B9F532C11D10D002C577B /* Model */,
+				7D9B9F462C1193C8002C577B /* ViewController */,
+			);
+			path = Lottery;
+			sourceTree = "<group>";
+		};
+		7D9B9F462C1193C8002C577B /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7D9B9F472C1193E6002C577B /* LotteryViewController.swift */,
+				7D9B9F4B2C1199FA002C577B /* LotteryViewController+Picker.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		7D9B9F4D2C11CC19002C577B /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				7D9B9F4E2C11CCFF002C577B /* APIFetcher.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		7D9B9F532C11D10D002C577B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7D9B9F542C11D121002C577B /* Lotto.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -186,6 +235,7 @@
 			name = MediaProject;
 			packageProductDependencies = (
 				7D9B9F022C0F03A8002C577B /* SnapKit */,
+				7D9B9F512C11CD6C002C577B /* Alamofire */,
 			);
 			productName = MediaProject;
 			productReference = 7D9B9ED82C0EFD3B002C577B /* MediaProject.app */;
@@ -217,6 +267,7 @@
 			mainGroup = 7D9B9ECF2C0EFD3B002C577B;
 			packageReferences = (
 				7D9B9F012C0F03A8002C577B /* XCRemoteSwiftPackageReference "SnapKit" */,
+				7D9B9F502C11CD6C002C577B /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 7D9B9ED92C0EFD3B002C577B /* Products */;
 			projectDirPath = "";
@@ -248,13 +299,18 @@
 			files = (
 				7D9B9F002C0F029B002C577B /* SignTextField.swift in Sources */,
 				7D9B9EE02C0EFD3B002C577B /* ViewController.swift in Sources */,
+				7D9B9F4F2C11CCFF002C577B /* APIFetcher.swift in Sources */,
 				7D9B9F052C0F1DCE002C577B /* UIImageView+Extension.swift in Sources */,
 				7D9B9EF82C0F002F002C577B /* MovieHomeViewController.swift in Sources */,
+				7D9B9F482C1193E6002C577B /* LotteryViewController.swift in Sources */,
 				7D9B9F442C11748C002C577B /* APIURL.swift in Sources */,
+				7D9B9F4C2C1199FA002C577B /* LotteryViewController+Picker.swift in Sources */,
+				7D9B9F552C11D121002C577B /* Lotto.swift in Sources */,
 				7D9B9F422C117478002C577B /* APIKey.swift in Sources */,
 				7D9B9EFB2C0F0068002C577B /* ViewController+Extension.swift in Sources */,
 				7D9B9F072C0F37AC002C577B /* UIButton+Extension.swift in Sources */,
 				7D9B9EDC2C0EFD3B002C577B /* AppDelegate.swift in Sources */,
+				7D9B9F4A2C119430002C577B /* UITextField+Extension.swift in Sources */,
 				7D9B9EF62C0F000F002C577B /* SignupViewController.swift in Sources */,
 				7D9B9EDE2C0EFD3B002C577B /* SceneDelegate.swift in Sources */,
 			);
@@ -499,6 +555,14 @@
 				minimumVersion = 5.7.1;
 			};
 		};
+		7D9B9F502C11CD6C002C577B /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -506,6 +570,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7D9B9F012C0F03A8002C577B /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		7D9B9F512C11CD6C002C577B /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D9B9F502C11CD6C002C577B /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
