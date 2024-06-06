@@ -20,6 +20,9 @@
 		7D9B9F032C0F03A8002C577B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7D9B9F022C0F03A8002C577B /* SnapKit */; };
 		7D9B9F052C0F1DCE002C577B /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9B9F042C0F1DCE002C577B /* UIImageView+Extension.swift */; };
 		7D9B9F072C0F37AC002C577B /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9B9F062C0F37AC002C577B /* UIButton+Extension.swift */; };
+		7D9B9F3F2C11739A002C577B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7D9B9F3E2C11739A002C577B /* .gitignore */; };
+		7D9B9F422C117478002C577B /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9B9F412C117478002C577B /* APIKey.swift */; };
+		7D9B9F442C11748C002C577B /* APIURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9B9F432C11748C002C577B /* APIURL.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +40,9 @@
 		7D9B9EFF2C0F029B002C577B /* SignTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignTextField.swift; sourceTree = "<group>"; };
 		7D9B9F042C0F1DCE002C577B /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		7D9B9F062C0F37AC002C577B /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		7D9B9F3E2C11739A002C577B /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		7D9B9F412C117478002C577B /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		7D9B9F432C11748C002C577B /* APIURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIURL.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +60,7 @@
 		7D9B9ECF2C0EFD3B002C577B = {
 			isa = PBXGroup;
 			children = (
+				7D9B9F3E2C11739A002C577B /* .gitignore */,
 				7D9B9EDA2C0EFD3B002C577B /* MediaProject */,
 				7D9B9ED92C0EFD3B002C577B /* Products */,
 			);
@@ -70,6 +77,7 @@
 		7D9B9EDA2C0EFD3B002C577B /* MediaProject */ = {
 			isa = PBXGroup;
 			children = (
+				7D9B9F402C117446002C577B /* API */,
 				7D9B9EF92C0F0051002C577B /* Extension */,
 				7D9B9EF02C0EFF0E002C577B /* Components */,
 				7D9B9EEF2C0EFEFD002C577B /* Pages */,
@@ -151,6 +159,15 @@
 			path = TextField;
 			sourceTree = "<group>";
 		};
+		7D9B9F402C117446002C577B /* API */ = {
+			isa = PBXGroup;
+			children = (
+				7D9B9F412C117478002C577B /* APIKey.swift */,
+				7D9B9F432C11748C002C577B /* APIURL.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -215,6 +232,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D9B9F3F2C11739A002C577B /* .gitignore in Resources */,
 				7D9B9EE52C0EFD3E002C577B /* Assets.xcassets in Resources */,
 				7D9B9EE82C0EFD3E002C577B /* Base in Resources */,
 				7D9B9EE32C0EFD3B002C577B /* Base in Resources */,
@@ -232,6 +250,8 @@
 				7D9B9EE02C0EFD3B002C577B /* ViewController.swift in Sources */,
 				7D9B9F052C0F1DCE002C577B /* UIImageView+Extension.swift in Sources */,
 				7D9B9EF82C0F002F002C577B /* MovieHomeViewController.swift in Sources */,
+				7D9B9F442C11748C002C577B /* APIURL.swift in Sources */,
+				7D9B9F422C117478002C577B /* APIKey.swift in Sources */,
 				7D9B9EFB2C0F0068002C577B /* ViewController+Extension.swift in Sources */,
 				7D9B9F072C0F37AC002C577B /* UIButton+Extension.swift in Sources */,
 				7D9B9EDC2C0EFD3B002C577B /* AppDelegate.swift in Sources */,
