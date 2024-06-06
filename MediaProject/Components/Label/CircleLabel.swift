@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NumberBallLabel : UILabel{
+final class NumberBallLabel : UILabel{
     override func layoutSubviews() {
         super.layoutSubviews()
         

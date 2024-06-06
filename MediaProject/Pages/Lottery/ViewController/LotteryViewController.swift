@@ -85,6 +85,7 @@ class LotteryViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .white
+        hideKeyboardWhenTappedAround()
         
         setupDelegate()
         configureSubview()
