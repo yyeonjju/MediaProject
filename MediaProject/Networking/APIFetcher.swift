@@ -10,11 +10,12 @@ import Alamofire
 
 protocol APIFetchable {
     func getLottoInfo(episode: Int, handler : @escaping (Lotto?)->Void) -> Void
+    func getBoxOfficeData(targetDate: String, handler : @escaping (BoxOffice)->Void, errorHandler : @escaping ()->Void) -> Void
 }
 
 
 class APIFetcher {
-    func getSingle<T : Decodable>(model : T.Type, url : String, completionHandler : @escaping (T) -> Void) {
+    func getSingle<T : Decodable>(model : T.Type, url : String, completionHandler : @escaping (T) -> Void, errorHandler : @escaping ()->Void = {}) {
         AF.request(url).responseDecodable(of: T.self) {response in
             print(response)
             switch response.result {
@@ -23,6 +24,7 @@ class APIFetcher {
                 completionHandler(value)
             case .failure(let error) :
                 print("error💚", error)
+                errorHandler()
             }
         }
     }
@@ -36,4 +38,15 @@ extension APIFetcher : APIFetchable{
             handler(value)
         }
     }
+    
+    func getBoxOfficeData(targetDate: String, handler: @escaping (BoxOffice) -> Void, errorHandler : @escaping ()->Void) {
+        let queryParamDictionary = ["key":APIKey.koficKey, "targetDt":targetDate]
+        
+        getSingle(model: BoxOffice.self, url: "\(APIURL.boxofficeURL)\(queryParamDictionary.queryString)"){ value in
+            handler(value)
+        } errorHandler: {
+            errorHandler()
+        }
+    }
+    
 }

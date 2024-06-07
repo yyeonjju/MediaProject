@@ -9,14 +9,17 @@ import UIKit
 
 extension BoxOfficeViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        guard let boxOfficeData else {return 0}
+        return boxOfficeData.boxOfficeResult.dailyBoxOfficeList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: BoxOfficeTableViewCell.identifier, for: indexPath) as! BoxOfficeTableViewCell
+        guard let boxOfficeData else {return cell}
+        let rowData = boxOfficeData.boxOfficeResult.dailyBoxOfficeList[indexPath.row]
         cell.numberLabel.text = String(indexPath.row)
-        cell.titleLebel.text = "---"
-        cell.dateLabel.text = "2024-03-03"
+        cell.titleLebel.text = rowData.movieNm
+        cell.dateLabel.text = rowData.openDt
         return cell
     }
 }
