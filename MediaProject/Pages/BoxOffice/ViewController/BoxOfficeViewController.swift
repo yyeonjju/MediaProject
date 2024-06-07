@@ -50,6 +50,7 @@ class BoxOfficeViewController: UIViewController {
         label.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
+        view.isHidden = true
         return view
     }()
     
@@ -66,7 +67,9 @@ class BoxOfficeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         setupBackgroundColor()
+        hideKeyboardWhenTappedAround()
         
         setupDelegate()
         configureSubview()
@@ -76,6 +79,8 @@ class BoxOfficeViewController: UIViewController {
     
     // MARK: - SetupDelegate
     private func setupDelegate(){
+        searchTextField.delegate = self
+        
         movieTableView.dataSource = self
         movieTableView.delegate = self
         
@@ -90,6 +95,7 @@ class BoxOfficeViewController: UIViewController {
     // MARK: - SetupTargetAction
     @objc private func searchButtonTapped() {
         getBoxOfficeData()
+        view.endEditing(true)
     }
 
     // MARK: - SetupUI
@@ -150,4 +156,12 @@ class BoxOfficeViewController: UIViewController {
     }
     
     
+}
+
+extension BoxOfficeViewController : UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        searchButtonTapped()
+        return true
+    }
 }
