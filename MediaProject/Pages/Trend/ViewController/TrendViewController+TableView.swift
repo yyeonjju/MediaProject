@@ -9,7 +9,9 @@ import UIKit
 
 extension TrendViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        guard let moviesData else {return 0}
+        
+        return moviesData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -22,7 +24,14 @@ extension TrendViewController : UITableViewDelegate, UITableViewDataSource{
         return cell
     }
     
-    
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let moviesData else {return }
+        let rowData = moviesData[indexPath.row]
+        
+        let vc = TrendDetailViewController()
+        vc.movieId = rowData.id
+        vc.movieData = rowData
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
 }

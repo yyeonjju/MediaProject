@@ -67,4 +67,15 @@ extension APIFetcher : APIFetchable{
         }
     }
     
+    func getMovieCreditData(movieID : Int, handler: @escaping (MovieCredit) -> Void) {
+        let headers : HTTPHeaders = [
+            "Authorization" : "Bearer \(APIKey.tmdbAccessToken)",
+            "accept" : "application/json"
+        ]
+        
+        getSingle(model: MovieCredit.self, url: "\(APIURL.tmdbMovieCreditURL)\(movieID)/credits", headers: headers){ value in
+            handler(value)
+        }
+    }
+    
 }
