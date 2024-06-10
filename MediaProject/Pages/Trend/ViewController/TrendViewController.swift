@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class TrendViewController: UIViewController {
     
@@ -13,6 +14,11 @@ class TrendViewController: UIViewController {
     let viewManager = TrendView()
     
     // MARK: - Properties
+    var moviesData : [MovieTrendResult]? {
+        didSet{
+            viewManager.trendListTableView.reloadData()
+        }
+    }
     
     
     // MARK: - Lifecycle
@@ -24,6 +30,7 @@ class TrendViewController: UIViewController {
         super.viewDidLoad()
         
         setupDelegate()
+        getMovieTrendData()
     }
     
     // MARK: - SetupDelegate
@@ -35,7 +42,12 @@ class TrendViewController: UIViewController {
     }
     
     // MARK: - APIFetch
-    
+    private func getMovieTrendData () {
+        APIFetcher().getMovieTrendData { [weak self] movieTrend in
+            guard let self else{return }
+            self.moviesData = movieTrend.results
+        }
+    }
 
 
 }

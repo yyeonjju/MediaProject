@@ -11,12 +11,19 @@ import Alamofire
 protocol APIFetchable {
     func getLottoInfo(episode: Int, handler : @escaping (Lotto?)->Void) -> Void
     func getBoxOfficeData(targetDate: String, handler : @escaping (BoxOffice)->Void, errorHandler : @escaping ()->Void) -> Void
+    func getMovieTrendData(handler : @escaping (MovieTrend)->Void)
 }
 
 
 class APIFetcher {
-    func getSingle<T : Decodable>(model : T.Type, url : String, completionHandler : @escaping (T) -> Void, errorHandler : @escaping ()->Void = {}) {
-        AF.request(url).responseDecodable(of: T.self) {response in
+    func getSingle<T : Decodable>(
+        model : T.Type,
+        url : String,
+        headers : HTTPHeaders = [],
+        completionHandler : @escaping (T) -> Void,
+        errorHandler : @escaping ()->Void = {}
+    ) {
+        AF.request(url, method: .get, headers: headers).responseDecodable(of: T.self) {response in
             print(response)
             switch response.result {
             case .success(let value) :
@@ -46,6 +53,17 @@ extension APIFetcher : APIFetchable{
             handler(value)
         } errorHandler: {
             errorHandler()
+        }
+    }
+    
+    func getMovieTrendData(handler: @escaping (MovieTrend) -> Void) {
+        let headers : HTTPHeaders = [
+            "Authorization" : "Bearer \(APIKey.tmdbAccessToken)",
+            "accept" : "application/json"
+        ]
+        
+        getSingle(model: MovieTrend.self, url: APIURL.tmdbMovietTrendURL, headers: headers){ value in
+            handler(value)
         }
     }
     

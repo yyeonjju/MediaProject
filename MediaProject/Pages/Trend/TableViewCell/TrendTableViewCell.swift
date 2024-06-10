@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class TrendTableViewCell: UITableViewCell {
     // MARK: - UI
@@ -36,7 +37,8 @@ class TrendTableViewCell: UITableViewCell {
     let mainImageView : UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .gray
-//        iv.configureDefaultImageView()
+        iv.clipsToBounds = true //why??
+        iv.contentMode = .scaleAspectFill
         return iv
     }()
     
@@ -83,7 +85,6 @@ class TrendTableViewCell: UITableViewCell {
         
         configureSubView()
         configureLayout()
-        configureData()
     }
     
     required init?(coder: NSCoder) {
@@ -91,7 +92,13 @@ class TrendTableViewCell: UITableViewCell {
     }
     
     // MARK: - ConfigureData
-    func configureData() {
+    func configureData(data : MovieTrendResult) {
+        dateLabel.text = data.releaseDate
+//        genreLabel.text = ""
+        let imageURL = URL(string: "\(APIURL.tmdbImagePrefixURL)\(data.posterPath)")
+        mainImageView.kf.setImage(with: imageURL)
+        titleLabel.text = data.originalTitle
+        overViewLabel.text = data.overview
         
     }
     
@@ -170,7 +177,7 @@ class TrendTableViewCell: UITableViewCell {
         
         arrowImageView.snp.makeConstraints { make in
             make.trailing.equalToSuperview()
-            make.top.equalTo(separator.snp.bottom).offset(20)
+            make.centerY.equalTo(showDetailLabel.snp.centerY)
         }
         
         
