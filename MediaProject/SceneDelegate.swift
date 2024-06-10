@@ -20,6 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let signupView = UINavigationController(rootViewController: SignupViewController())
         let lotteryView = UINavigationController(rootViewController: LotteryViewController())
         let boxOffice = UINavigationController(rootViewController: BoxOfficeViewController())
+        let trendView = UINavigationController(rootViewController: TrendViewController())
 
         
         
@@ -30,7 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tabBarVC = UITabBarController()
         
         // 탭바로 사용하기 위한 뷰 컨트롤러들 설정
-        tabBarVC.setViewControllers([movieHomeView,signupView, lotteryView, boxOffice], animated: true)
+        tabBarVC.setViewControllers([movieHomeView,signupView, lotteryView, boxOffice, trendView], animated: true)
         tabBarVC.modalPresentationStyle = .fullScreen
         tabBarVC.tabBar.backgroundColor = .white
         
@@ -48,6 +49,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         items[3].title = "boxOffice"
         items[3].image = UIImage(systemName: "popcorn.fill")
+        
+        items[4].title = "trend"
+        items[4].image = UIImage(systemName: "star.fill")
         
         window.rootViewController = tabBarVC
     }

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D2117AC2C17171D0080ED90 /* TrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2117AB2C17171D0080ED90 /* TrendViewController.swift */; };
+		7D2117AF2C1717530080ED90 /* TrendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2117AE2C1717530080ED90 /* TrendView.swift */; };
+		7D2117B12C1717FC0080ED90 /* TrendViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2117B02C1717FC0080ED90 /* TrendViewController+TableView.swift */; };
+		7D2117B42C17199C0080ED90 /* TrendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2117B32C17199C0080ED90 /* TrendTableViewCell.swift */; };
 		7D9B9EDC2C0EFD3B002C577B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9B9EDB2C0EFD3B002C577B /* AppDelegate.swift */; };
 		7D9B9EDE2C0EFD3B002C577B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9B9EDD2C0EFD3B002C577B /* SceneDelegate.swift */; };
 		7D9B9EE02C0EFD3B002C577B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9B9EDF2C0EFD3B002C577B /* ViewController.swift */; };
@@ -42,6 +46,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7D2117AB2C17171D0080ED90 /* TrendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendViewController.swift; sourceTree = "<group>"; };
+		7D2117AE2C1717530080ED90 /* TrendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendView.swift; sourceTree = "<group>"; };
+		7D2117B02C1717FC0080ED90 /* TrendViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrendViewController+TableView.swift"; sourceTree = "<group>"; };
+		7D2117B32C17199C0080ED90 /* TrendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendTableViewCell.swift; sourceTree = "<group>"; };
 		7D9B9ED82C0EFD3B002C577B /* MediaProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediaProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D9B9EDB2C0EFD3B002C577B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D9B9EDD2C0EFD3B002C577B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +97,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7D2117A92C1716DB0080ED90 /* Trend */ = {
+			isa = PBXGroup;
+			children = (
+				7D2117B22C17197F0080ED90 /* TableViewCell */,
+				7D2117AD2C17173A0080ED90 /* View */,
+				7D2117AA2C1716E60080ED90 /* ViewController */,
+			);
+			path = Trend;
+			sourceTree = "<group>";
+		};
+		7D2117AA2C1716E60080ED90 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7D2117AB2C17171D0080ED90 /* TrendViewController.swift */,
+				7D2117B02C1717FC0080ED90 /* TrendViewController+TableView.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		7D2117AD2C17173A0080ED90 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7D2117AE2C1717530080ED90 /* TrendView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7D2117B22C17197F0080ED90 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				7D2117B32C17199C0080ED90 /* TrendTableViewCell.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
 		7D9B9ECF2C0EFD3B002C577B = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +173,7 @@
 		7D9B9EEF2C0EFEFD002C577B /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				7D2117A92C1716DB0080ED90 /* Trend */,
 				7D9B9F602C11F60C002C577B /* BoxOffice */,
 				7D9B9F452C1193A8002C577B /* Lottery */,
 				7D9B9EF22C0EFFB9002C577B /* MovieHome */,
@@ -392,6 +436,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D9B9F592C11DE9E002C577B /* UILabel+Extension.swift in Sources */,
+				7D2117AC2C17171D0080ED90 /* TrendViewController.swift in Sources */,
 				7D9B9F002C0F029B002C577B /* SignTextField.swift in Sources */,
 				7D9B9F712C12C89A002C577B /* BoxOffice.swift in Sources */,
 				7D9B9EE02C0EFD3B002C577B /* ViewController.swift in Sources */,
@@ -401,9 +446,11 @@
 				7D9B9F482C1193E6002C577B /* LotteryViewController.swift in Sources */,
 				7D9B9F442C11748C002C577B /* APIURL.swift in Sources */,
 				7D9B9F632C11F63A002C577B /* BoxOfficeViewController.swift in Sources */,
+				7D2117B42C17199C0080ED90 /* TrendTableViewCell.swift in Sources */,
 				7D9B9F4C2C1199FA002C577B /* LotteryViewController+Picker.swift in Sources */,
 				7D9B9F552C11D121002C577B /* Lotto.swift in Sources */,
 				7D9B9F422C117478002C577B /* APIKey.swift in Sources */,
+				7D2117B12C1717FC0080ED90 /* TrendViewController+TableView.swift in Sources */,
 				7D9B9F682C11FD64002C577B /* BoxOfficeViewController+TableView.swift in Sources */,
 				7D9B9F6B2C11FDE7002C577B /* BoxOfficeTableViewCell.swift in Sources */,
 				7D9B9EFB2C0F0068002C577B /* ViewController+Extension.swift in Sources */,
@@ -416,6 +463,7 @@
 				7D9B9F662C11FC2D002C577B /* Separator.swift in Sources */,
 				7D9B9F5C2C11E389002C577B /* CircleLabel.swift in Sources */,
 				7D9B9EDE2C0EFD3B002C577B /* SceneDelegate.swift in Sources */,
+				7D2117AF2C1717530080ED90 /* TrendView.swift in Sources */,
 				7D9B9F5F2C11F0B6002C577B /* UtilFunc.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
