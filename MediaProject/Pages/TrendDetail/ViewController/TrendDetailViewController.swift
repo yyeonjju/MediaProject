@@ -15,7 +15,11 @@ class TrendDetailViewController: UIViewController {
     // MARK: - Properties
     var movieId : Int?
     var movieData : MovieTrendResult?
-    var movieCreditData : MovieCredit?
+    var movieCreditData : MovieCredit? {
+        didSet{
+            viewManager.castTableView.reloadData()
+        }
+    }
     
     
     // MARK: - Lifecycle
@@ -29,7 +33,17 @@ class TrendDetailViewController: UIViewController {
         view.backgroundColor = .white
         getMovieTrendData()
         configureData()
+        setupDelegate()
     }
+    
+    // MARK: - SetupDelegate
+    private func setupDelegate() {
+        viewManager.castTableView.dataSource = self
+        viewManager.castTableView.delegate = self
+        
+        viewManager.castTableView.register(CastTableViewCell.self, forCellReuseIdentifier: CastTableViewCell.identifier)
+    }
+
     
     
     // MARK: - APIFetch

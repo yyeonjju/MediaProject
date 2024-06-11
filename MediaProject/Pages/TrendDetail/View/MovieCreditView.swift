@@ -24,6 +24,12 @@ class MovieCreditView: UIView {
         return label
     }()
     
+    let castTableView : UITableView = {
+        let tv = UITableView()
+        tv.rowHeight = 130
+        return tv
+    }()
+    
     // MARK: - Initializer
     
     override init(frame : CGRect) {
@@ -41,7 +47,7 @@ class MovieCreditView: UIView {
     // MARK: - ConfigureUI
     
     func configureSubView() {
-        [titleLabel, overviewLabel]
+        [titleLabel, overviewLabel, castTableView]
             .forEach{
                 addSubview($0)
             }
@@ -50,12 +56,19 @@ class MovieCreditView: UIView {
     func configureLayout() {
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide).offset(20)
+            make.leading.equalToSuperview()
         }
         
         overviewLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(20)
             make.horizontalEdges.equalToSuperview()
         }
+        
+        castTableView.snp.makeConstraints { make in
+            make.top.equalTo(overviewLabel.snp.bottom).offset(50)
+            make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
+        }
+        
     }
 
 
