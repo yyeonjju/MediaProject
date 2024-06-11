@@ -14,6 +14,7 @@ protocol APIFetchable {
     func getMovieTrendData(handler : @escaping (MovieTrend)->Void)
     func getMovieCreditData(movieID : Int, handler: @escaping (MovieCredit) -> Void) -> Void
     func getMovieGenreData(handler : @escaping (MovieGenre)->Void) -> Void
+    func getMovieSearchData(text : String, handler : @escaping (MovieSearch)->Void) -> Void
 }
 
 
@@ -92,6 +93,19 @@ extension APIFetcher : APIFetchable{
         ]
         
         getSingle(model: MovieGenre.self, url: "\(APIURL.tmdbMovieGenreURL)", headers: headers){ value in
+            handler(value)
+        }
+    }
+    
+    
+    func getMovieSearchData(text : String, handler: @escaping (MovieSearch) -> Void) {
+        let queryParamDictionary = ["query": text]
+        let headers : HTTPHeaders = [
+            "Authorization" : "Bearer \(APIKey.tmdbAccessToken)",
+            "accept" : "application/json"
+        ]
+        
+        getSingle(model: MovieSearch.self, url: "\(APIURL.tmbdMovieSearchURL)\(queryParamDictionary.queryString)", headers: headers){ value in
             handler(value)
         }
     }

@@ -18,10 +18,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //⭐️ 네비게이션 컨트롤러 생성
         let movieHomeView = UINavigationController(rootViewController: MovieHomeViewController())
         let signupView = UINavigationController(rootViewController: SignupViewController())
-        let lotteryView = UINavigationController(rootViewController: LotteryViewController())
-        let boxOffice = UINavigationController(rootViewController: BoxOfficeViewController())
+//        let lotteryView = UINavigationController(rootViewController: LotteryViewController())
+//        let boxOffice = UINavigationController(rootViewController: BoxOfficeViewController())
         let trendView = UINavigationController(rootViewController: TrendViewController())
-
+        let movieSearchView = UINavigationController(rootViewController: MovieSearchViewController())
         
         
 //        homeView.navigationBar.backgroundColor = .yellow
@@ -31,7 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tabBarVC = UITabBarController()
         
         // 탭바로 사용하기 위한 뷰 컨트롤러들 설정
-        tabBarVC.setViewControllers([movieHomeView,signupView, lotteryView, boxOffice, trendView], animated: true)
+        tabBarVC.setViewControllers([movieHomeView,signupView,trendView, movieSearchView], animated: true)
         tabBarVC.modalPresentationStyle = .fullScreen
         tabBarVC.tabBar.backgroundColor = .white
         
@@ -44,14 +44,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         items[1].title = "signup"
         items[1].image = UIImage(systemName: "person.fill")
 
-        items[2].title = "lottery"
-        items[2].image = UIImage(systemName: "book.fill")
+//        items[2].title = "lottery"
+//        items[2].image = UIImage(systemName: "book.fill")
+//        
+//        items[3].title = "boxOffice"
+//        items[3].image = UIImage(systemName: "popcorn.fill")
         
-        items[3].title = "boxOffice"
-        items[3].image = UIImage(systemName: "popcorn.fill")
+        items[2].title = "trend"
+        items[2].image = UIImage(systemName: "star.fill")
         
-        items[4].title = "trend"
-        items[4].image = UIImage(systemName: "star.fill")
+        items[3].title = "search"
+        items[3].image = UIImage(systemName: "magnifyingglass")
         
         window.rootViewController = tabBarVC
     }

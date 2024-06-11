@@ -13,7 +13,7 @@ extension Dictionary {
         for (key,value) in self {
             output +=  "\(key)=\(value)&"
         }
-        output = String(output.dropLast())
+        output = "?\(String(output.dropLast()))"
         return output
     }
 }
