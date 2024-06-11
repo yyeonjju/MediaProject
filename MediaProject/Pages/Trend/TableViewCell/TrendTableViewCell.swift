@@ -92,9 +92,9 @@ class TrendTableViewCell: UITableViewCell {
     }
     
     // MARK: - ConfigureData
-    func configureData(data : MovieTrendResult) {
+    func configureData(data : MovieTrendResult, genreNames : [String]) {
         dateLabel.text = data.releaseDate
-//        genreLabel.text = ""
+        genreLabel.text = genreNames.map{"#\($0) "}.joined()
         let imageURL = URL(string: "\(APIURL.tmdbImagePrefixURL)\(data.posterPath)")
         mainImageView.kf.setImage(with: imageURL)
         titleLabel.text = data.originalTitle

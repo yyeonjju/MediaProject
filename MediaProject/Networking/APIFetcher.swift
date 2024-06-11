@@ -12,6 +12,8 @@ protocol APIFetchable {
     func getLottoInfo(episode: Int, handler : @escaping (Lotto?)->Void) -> Void
     func getBoxOfficeData(targetDate: String, handler : @escaping (BoxOffice)->Void, errorHandler : @escaping ()->Void) -> Void
     func getMovieTrendData(handler : @escaping (MovieTrend)->Void)
+    func getMovieCreditData(movieID : Int, handler: @escaping (MovieCredit) -> Void) -> Void
+    func getMovieGenreData(handler : @escaping (MovieGenre)->Void) -> Void
 }
 
 
@@ -23,17 +25,21 @@ class APIFetcher {
         completionHandler : @escaping (T) -> Void,
         errorHandler : @escaping ()->Void = {}
     ) {
-        AF.request(url, method: .get, headers: headers).responseDecodable(of: T.self) {response in
-            print(response)
-            switch response.result {
-            case .success(let value) :
-                print("success❤️", value)
-                completionHandler(value)
-            case .failure(let error) :
-                print("error💚", error)
-                errorHandler()
+        AF.request(url, method: .get, headers: headers)
+//            .responseString{ data in
+//                print(data)
+//            }
+            .responseDecodable(of: T.self) {response in
+                print(response)
+                switch response.result {
+                case .success(let value) :
+                    print("success❤️", value)
+                    completionHandler(value)
+                case .failure(let error) :
+                    print("error💚", error)
+                    errorHandler()
+                }
             }
-        }
     }
 
 }
@@ -78,4 +84,15 @@ extension APIFetcher : APIFetchable{
         }
     }
     
+    
+    func getMovieGenreData(handler: @escaping (MovieGenre) -> Void) {
+        let headers : HTTPHeaders = [
+            "Authorization" : "Bearer \(APIKey.tmdbAccessToken)",
+            "accept" : "application/json"
+        ]
+        
+        getSingle(model: MovieGenre.self, url: "\(APIURL.tmdbMovieGenreURL)", headers: headers){ value in
+            handler(value)
+        }
+    }
 }

@@ -18,6 +18,7 @@
 		7D2117C42C17486F0080ED90 /* MovieCreditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2117C32C17486E0080ED90 /* MovieCreditView.swift */; };
 		7D2117C62C17C9940080ED90 /* TrendDetailViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2117C52C17C9940080ED90 /* TrendDetailViewController+TableView.swift */; };
 		7D2117C92C17C9F20080ED90 /* CastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2117C82C17C9F20080ED90 /* CastTableViewCell.swift */; };
+		7D2117D32C187D480080ED90 /* MovieGenre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2117D22C187D480080ED90 /* MovieGenre.swift */; };
 		7D9B9EDC2C0EFD3B002C577B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9B9EDB2C0EFD3B002C577B /* AppDelegate.swift */; };
 		7D9B9EDE2C0EFD3B002C577B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9B9EDD2C0EFD3B002C577B /* SceneDelegate.swift */; };
 		7D9B9EE02C0EFD3B002C577B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9B9EDF2C0EFD3B002C577B /* ViewController.swift */; };
@@ -63,6 +64,7 @@
 		7D2117C32C17486E0080ED90 /* MovieCreditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCreditView.swift; sourceTree = "<group>"; };
 		7D2117C52C17C9940080ED90 /* TrendDetailViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrendDetailViewController+TableView.swift"; sourceTree = "<group>"; };
 		7D2117C82C17C9F20080ED90 /* CastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastTableViewCell.swift; sourceTree = "<group>"; };
+		7D2117D22C187D480080ED90 /* MovieGenre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieGenre.swift; sourceTree = "<group>"; };
 		7D9B9ED82C0EFD3B002C577B /* MediaProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediaProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D9B9EDB2C0EFD3B002C577B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D9B9EDD2C0EFD3B002C577B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				7D2117B62C1731DE0080ED90 /* TrendModel.swift */,
+				7D2117D22C187D480080ED90 /* MovieGenre.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -519,6 +522,7 @@
 				7D9B9F482C1193E6002C577B /* LotteryViewController.swift in Sources */,
 				7D9B9F442C11748C002C577B /* APIURL.swift in Sources */,
 				7D2117C62C17C9940080ED90 /* TrendDetailViewController+TableView.swift in Sources */,
+				7D2117D32C187D480080ED90 /* MovieGenre.swift in Sources */,
 				7D9B9F632C11F63A002C577B /* BoxOfficeViewController.swift in Sources */,
 				7D2117B42C17199C0080ED90 /* TrendTableViewCell.swift in Sources */,
 				7D2117C42C17486F0080ED90 /* MovieCreditView.swift in Sources */,

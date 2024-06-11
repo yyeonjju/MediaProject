@@ -20,6 +20,12 @@ class TrendViewController: UIViewController {
         }
     }
     
+    var movieGenre : [Genre]? {
+        didSet{
+            getMovieTrendData()
+        }
+    }
+    
     
     // MARK: - Lifecycle
     override func loadView() {
@@ -30,7 +36,7 @@ class TrendViewController: UIViewController {
         super.viewDidLoad()
         
         setupDelegate()
-        getMovieTrendData()
+        getMovieGenreData()
     }
     
     // MARK: - SetupDelegate
@@ -48,6 +54,24 @@ class TrendViewController: UIViewController {
             self.moviesData = movieTrend.results
         }
     }
+    
+    private func getMovieGenreData() {
+        APIFetcher().getMovieGenreData { [weak self] genreData in
+            guard let self else{return }
+            self.movieGenre = genreData.genres
+        }
+    }
+    
+    // MARK: - Method
+    func makeGenreNameArray (genreIDS : [Int]) -> [String] {
+        guard let movieGenre else {return []}
+        let result : [String] = genreIDS.map{ id in
+            let indexInGenresData = movieGenre.firstIndex{item in item.id == id}
+            return movieGenre[indexInGenresData!].name
+        }
+        return result
+    }
+
 
 
 }
