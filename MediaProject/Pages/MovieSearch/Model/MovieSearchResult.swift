@@ -10,7 +10,7 @@ import Foundation
 
 struct MovieSearch: Codable {
     let page: Int
-    let results: [MovieSearchResult]
+    var results: [MovieSearchResult]
     let totalPages, totalResults: Int
 
     enum CodingKeys: String, CodingKey {
