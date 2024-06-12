@@ -23,6 +23,9 @@
 		7D2117DB2C1889FA0080ED90 /* MovieSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2117DA2C1889FA0080ED90 /* MovieSearchView.swift */; };
 		7D2117DE2C188B060080ED90 /* SearchedMovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2117DD2C188B060080ED90 /* SearchedMovieTableViewCell.swift */; };
 		7D2117E02C18913A0080ED90 /* MovieSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2117DF2C1891390080ED90 /* MovieSearchResult.swift */; };
+		7D893B1C2C19A157003D552E /* MovieSearchCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D893B1B2C19A157003D552E /* MovieSearchCollectionViewController.swift */; };
+		7D893B1E2C19A172003D552E /* MovieSearchCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D893B1D2C19A172003D552E /* MovieSearchCollectionView.swift */; };
+		7D893B212C19A5B9003D552E /* MovieSearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D893B202C19A5B9003D552E /* MovieSearchCollectionViewCell.swift */; };
 		7D9B9EDC2C0EFD3B002C577B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9B9EDB2C0EFD3B002C577B /* AppDelegate.swift */; };
 		7D9B9EDE2C0EFD3B002C577B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9B9EDD2C0EFD3B002C577B /* SceneDelegate.swift */; };
 		7D9B9EE02C0EFD3B002C577B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9B9EDF2C0EFD3B002C577B /* ViewController.swift */; };
@@ -73,6 +76,9 @@
 		7D2117DA2C1889FA0080ED90 /* MovieSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchView.swift; sourceTree = "<group>"; };
 		7D2117DD2C188B060080ED90 /* SearchedMovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedMovieTableViewCell.swift; sourceTree = "<group>"; };
 		7D2117DF2C1891390080ED90 /* MovieSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchResult.swift; sourceTree = "<group>"; };
+		7D893B1B2C19A157003D552E /* MovieSearchCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchCollectionViewController.swift; sourceTree = "<group>"; };
+		7D893B1D2C19A172003D552E /* MovieSearchCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchCollectionView.swift; sourceTree = "<group>"; };
+		7D893B202C19A5B9003D552E /* MovieSearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		7D9B9ED82C0EFD3B002C577B /* MediaProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediaProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D9B9EDB2C0EFD3B002C577B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D9B9EDD2C0EFD3B002C577B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -253,6 +259,48 @@
 			path = TableViewCell;
 			sourceTree = "<group>";
 		};
+		7D893B172C19A0B1003D552E /* MovieSearchCollection */ = {
+			isa = PBXGroup;
+			children = (
+				7D893B1F2C19A59B003D552E /* CollectionViewCell */,
+				7D893B1A2C19A119003D552E /* Model */,
+				7D893B192C19A113003D552E /* View */,
+				7D893B182C19A105003D552E /* ViewController */,
+			);
+			path = MovieSearchCollection;
+			sourceTree = "<group>";
+		};
+		7D893B182C19A105003D552E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7D893B1B2C19A157003D552E /* MovieSearchCollectionViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		7D893B192C19A113003D552E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7D893B1D2C19A172003D552E /* MovieSearchCollectionView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7D893B1A2C19A119003D552E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7D893B1F2C19A59B003D552E /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				7D893B202C19A5B9003D552E /* MovieSearchCollectionViewCell.swift */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
 		7D9B9ECF2C0EFD3B002C577B = {
 			isa = PBXGroup;
 			children = (
@@ -294,6 +342,7 @@
 		7D9B9EEF2C0EFEFD002C577B /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				7D893B172C19A0B1003D552E /* MovieSearchCollection */,
 				7D2117D42C1887C80080ED90 /* MovieSearch */,
 				7D2117BB2C1742C90080ED90 /* TrendDetail */,
 				7D2117A92C1716DB0080ED90 /* Trend */,
@@ -563,6 +612,7 @@
 				7D9B9F592C11DE9E002C577B /* UILabel+Extension.swift in Sources */,
 				7D2117B72C1731DE0080ED90 /* TrendModel.swift in Sources */,
 				7D2117AC2C17171D0080ED90 /* TrendViewController.swift in Sources */,
+				7D893B212C19A5B9003D552E /* MovieSearchCollectionViewCell.swift in Sources */,
 				7D9B9F002C0F029B002C577B /* SignTextField.swift in Sources */,
 				7D9B9F712C12C89A002C577B /* BoxOffice.swift in Sources */,
 				7D9B9EE02C0EFD3B002C577B /* ViewController.swift in Sources */,
@@ -580,6 +630,7 @@
 				7D2117B42C17199C0080ED90 /* TrendTableViewCell.swift in Sources */,
 				7D2117DE2C188B060080ED90 /* SearchedMovieTableViewCell.swift in Sources */,
 				7D2117C42C17486F0080ED90 /* MovieCreditView.swift in Sources */,
+				7D893B1E2C19A172003D552E /* MovieSearchCollectionView.swift in Sources */,
 				7D9B9F4C2C1199FA002C577B /* LotteryViewController+Picker.swift in Sources */,
 				7D9B9F552C11D121002C577B /* Lotto.swift in Sources */,
 				7D9B9F422C117478002C577B /* APIKey.swift in Sources */,
@@ -593,6 +644,7 @@
 				7D9B9EDC2C0EFD3B002C577B /* AppDelegate.swift in Sources */,
 				7D2117DB2C1889FA0080ED90 /* MovieSearchView.swift in Sources */,
 				7D9B9F6E2C11FE4C002C577B /* ReuseIdentifierProtocol.swift in Sources */,
+				7D893B1C2C19A157003D552E /* MovieSearchCollectionViewController.swift in Sources */,
 				7D9B9F4A2C119430002C577B /* UITextField+Extension.swift in Sources */,
 				7D9B9EF62C0F000F002C577B /* SignupViewController.swift in Sources */,
 				7D2117E02C18913A0080ED90 /* MovieSearchResult.swift in Sources */,

@@ -37,14 +37,14 @@ class MovieSearchView: UIView {
     
     // MARK: - ConfigureUI
     
-    func configureSubView() {
+    private func configureSubView() {
         [movieSearchBar, movieTableView]
             .forEach{
                 addSubview($0)
             }
     }
     
-    func configureLayout() {
+    private func configureLayout() {
         movieSearchBar.snp.makeConstraints { make in
             make.horizontalEdges.top.equalTo(safeAreaLayoutGuide)
             make.height.equalTo(44)

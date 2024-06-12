@@ -20,8 +20,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let signupView = UINavigationController(rootViewController: SignupViewController())
 //        let lotteryView = UINavigationController(rootViewController: LotteryViewController())
 //        let boxOffice = UINavigationController(rootViewController: BoxOfficeViewController())
-        let trendView = UINavigationController(rootViewController: TrendViewController())
+//        let trendView = UINavigationController(rootViewController: TrendViewController())
         let movieSearchView = UINavigationController(rootViewController: MovieSearchViewController())
+        
+        let movieSearchCollectionView = UINavigationController(rootViewController: MovieSearchCollectionViewController())
         
         
 //        homeView.navigationBar.backgroundColor = .yellow
@@ -31,7 +33,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tabBarVC = UITabBarController()
         
         // 탭바로 사용하기 위한 뷰 컨트롤러들 설정
-        tabBarVC.setViewControllers([movieHomeView,signupView,trendView, movieSearchView], animated: true)
+        tabBarVC.setViewControllers([movieHomeView,signupView, movieSearchView, movieSearchCollectionView], animated: true)
         tabBarVC.modalPresentationStyle = .fullScreen
         tabBarVC.tabBar.backgroundColor = .white
         
@@ -50,11 +52,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        items[3].title = "boxOffice"
 //        items[3].image = UIImage(systemName: "popcorn.fill")
         
-        items[2].title = "trend"
-        items[2].image = UIImage(systemName: "star.fill")
+//        items[2].title = "trend"
+//        items[2].image = UIImage(systemName: "star.fill")
+//        
+        items[2].title = "search"
+        items[2].image = UIImage(systemName: "magnifyingglass")
         
         items[3].title = "search"
-        items[3].image = UIImage(systemName: "magnifyingglass")
+        items[3].image = UIImage(systemName: "heart")
         
         window.rootViewController = tabBarVC
     }
