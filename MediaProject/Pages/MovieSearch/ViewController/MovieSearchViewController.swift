@@ -90,8 +90,6 @@ extension MovieSearchViewController : UITableViewDataSourcePrefetching {
             }
         }
     }
-    
-    
 }
 
 extension MovieSearchViewController : UISearchBarDelegate {

@@ -17,7 +17,7 @@ class MovieSearchCollectionViewController: UIViewController {
             viewManager.movieCollectionView.reloadData()
         }
     }
-    
+    var page = 1
     
     // MARK: - Lifecycle
     override func loadView() {
@@ -39,22 +39,22 @@ class MovieSearchCollectionViewController: UIViewController {
         viewManager.movieCollectionView.dataSource = self
         viewManager.movieCollectionView.register(MovieSearchCollectionViewCell.self, forCellWithReuseIdentifier: MovieSearchCollectionViewCell.identifier)
         
-        
+        viewManager.movieCollectionView.prefetchDataSource = self
     }
     
     // MARK: - APIFetch
     func getMovieSearchData() {
-        APIFetcher().getMovieSearchData(text: viewManager.movieSearchBar.text ?? "", page: 1){ [weak self] movieData in
+        APIFetcher().getMovieSearchData(text: viewManager.movieSearchBar.text ?? "", page: page){ [weak self] movieData in
             guard let self else{return }
-//            if page == 1 {
+            if page == 1 {
                 self.searchedMovieData = movieData
                 
-//                if !self.searchedMovieData!.results.isEmpty {
-//                    self.viewManager.movieTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
-//                }
-//            }else {
-//                self.searchedMovieData?.results.append(contentsOf: movieData.results)
-//            }
+                if !self.searchedMovieData!.results.isEmpty {
+                    self.viewManager.movieCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+                }
+            }else {
+                self.searchedMovieData?.results.append(contentsOf: movieData.results)
+            }
 
             
         }
@@ -77,9 +77,27 @@ extension MovieSearchCollectionViewController : UICollectionViewDelegate, UIColl
     }
 }
 
+extension MovieSearchCollectionViewController : UICollectionViewDataSourcePrefetching {
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        print(#function, indexPaths)
+        guard let searchedMovieData else {return}
+        
+        for item in indexPaths {
+            if searchedMovieData.results.count - 3 == item.row && page < searchedMovieData.totalPages{
+                page += 1
+                getMovieSearchData()
+            }
+        }
+    }
+    
+    
+}
+
+
+
 extension MovieSearchCollectionViewController : UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        page = 1
+        page = 1
         getMovieSearchData()
     }
 }
