@@ -19,6 +19,14 @@ protocol APIFetchable {
 
 
 class APIFetcher {
+    static let shared = APIFetcher()
+    private init(){}
+    
+    let tmdbBaseHeader  : HTTPHeaders = [
+        "Authorization" : "Bearer \(APIKey.tmdbAccessToken)",
+        "accept" : "application/json"
+    ]
+    
     func getSingle<T : Decodable>(
         model : T.Type,
         url : String,
@@ -26,6 +34,7 @@ class APIFetcher {
         completionHandler : @escaping (T) -> Void,
         errorHandler : @escaping ()->Void = {}
     ) {
+        print("url❤️", url)
         AF.request(url, method: .get, headers: headers)
 //            .responseString{ data in
 //                print(data)
@@ -64,35 +73,21 @@ extension APIFetcher : APIFetchable{
     }
     
     func getMovieTrendData(handler: @escaping (MovieTrend) -> Void) {
-        let headers : HTTPHeaders = [
-            "Authorization" : "Bearer \(APIKey.tmdbAccessToken)",
-            "accept" : "application/json"
-        ]
-        
-        getSingle(model: MovieTrend.self, url: APIURL.tmdbMovietTrendURL, headers: headers){ value in
+        getSingle(model: MovieTrend.self, url: APIURL.tmdbMovietTrendURL, headers: tmdbBaseHeader){ value in
             handler(value)
         }
     }
     
     func getMovieCreditData(movieID : Int, handler: @escaping (MovieCredit) -> Void) {
-        let headers : HTTPHeaders = [
-            "Authorization" : "Bearer \(APIKey.tmdbAccessToken)",
-            "accept" : "application/json"
-        ]
         
-        getSingle(model: MovieCredit.self, url: "\(APIURL.tmdbMovieCreditURL)\(movieID)/credits", headers: headers){ value in
+        getSingle(model: MovieCredit.self, url: "\(APIURL.tmdbMovieCreditURL)\(movieID)/credits", headers: tmdbBaseHeader){ value in
             handler(value)
         }
     }
     
     
     func getMovieGenreData(handler: @escaping (MovieGenre) -> Void) {
-        let headers : HTTPHeaders = [
-            "Authorization" : "Bearer \(APIKey.tmdbAccessToken)",
-            "accept" : "application/json"
-        ]
-        
-        getSingle(model: MovieGenre.self, url: "\(APIURL.tmdbMovieGenreURL)", headers: headers){ value in
+        getSingle(model: MovieGenre.self, url: "\(APIURL.tmdbMovieGenreURL)", headers: tmdbBaseHeader){ value in
             handler(value)
         }
     }
@@ -100,12 +95,22 @@ extension APIFetcher : APIFetchable{
     
     func getMovieSearchData(text : String, page : Int, handler: @escaping (MovieSearch) -> Void) {
         let queryParamDictionary = ["query": text, "page" : String(page)]
-        let headers : HTTPHeaders = [
-            "Authorization" : "Bearer \(APIKey.tmdbAccessToken)",
-            "accept" : "application/json"
-        ]
         
-        getSingle(model: MovieSearch.self, url: "\(APIURL.tmbdMovieSearchURL)\(queryParamDictionary.queryString)", headers: headers){ value in
+        getSingle(model: MovieSearch.self, url: "\(APIURL.tmbdMovieSearchURL)\(queryParamDictionary.queryString)", headers: tmdbBaseHeader){ value in
+            handler(value)
+        }
+    }
+    
+    func getSimilarMovieData(movieId : Int, handler: @escaping (MovieGenre) -> Void) {
+        let url = APIURL.tmbdSimilarMovieURL.replacingOccurrences(of: "{movieId}", with: String(movieId))
+        getSingle(model: MovieGenre.self, url: url, headers: tmdbBaseHeader){ value in
+            handler(value)
+        }
+    }
+    
+    func getRecommendationMovieData(movieId : Int, handler: @escaping (MovieGenre) -> Void) {
+        let url = APIURL.tmbdRecommendationMovieURL.replacingOccurrences(of: "{movieId}", with: String(movieId))
+        getSingle(model: MovieGenre.self, url: url, headers: tmdbBaseHeader){ value in
             handler(value)
         }
     }

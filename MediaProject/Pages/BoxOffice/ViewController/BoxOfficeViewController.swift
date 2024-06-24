@@ -143,7 +143,7 @@ class BoxOfficeViewController: UIViewController {
     private func getBoxOfficeData() {
 
         guard let searchText = searchTextField.text else {return }
-        APIFetcher().getBoxOfficeData(targetDate: searchText) { [weak self] value in
+        APIFetcher.shared.getBoxOfficeData(targetDate: searchText) { [weak self] value in
             guard let self else{return }
             self.emptyView.isHidden = true
             self.movieTableView.isHidden = false

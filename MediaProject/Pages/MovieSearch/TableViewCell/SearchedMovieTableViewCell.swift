@@ -39,7 +39,7 @@ class SearchedMovieTableViewCell: UITableViewCell {
     
     // MARK: - ConfigureData
     func configureData(data: MovieSearchResult){
-        let url = URL(string: "\(APIURL.tmdbImagePrefixURL)\(data.posterPath)")
+        let url = URL(string: "\(APIURL.tmdbImagePrefixURL)\(data.posterPath ?? "")")
         movieImageView.kf.setImage(with: url)
         titleLabel.text = data.originalTitle
     }

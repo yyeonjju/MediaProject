@@ -150,7 +150,7 @@ class LotteryViewController: UIViewController {
     
     // MARK: - APIFetch
     private func getLottoInfo(episode : Int) {
-        APIFetcher().getLottoInfo(episode : episode){ [weak self] value in
+        APIFetcher.shared.getLottoInfo(episode : episode){ [weak self] value in
             guard let self else{return }
             self.lottoValue = value
         }

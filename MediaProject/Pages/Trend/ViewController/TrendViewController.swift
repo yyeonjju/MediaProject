@@ -49,14 +49,14 @@ class TrendViewController: UIViewController {
     
     // MARK: - APIFetch
     private func getMovieTrendData () {
-        APIFetcher().getMovieTrendData { [weak self] movieTrend in
+        APIFetcher.shared.getMovieTrendData { [weak self] movieTrend in
             guard let self else{return }
             self.moviesData = movieTrend.results
         }
     }
     
     private func getMovieGenreData() {
-        APIFetcher().getMovieGenreData { [weak self] genreData in
+        APIFetcher.shared.getMovieGenreData { [weak self] genreData in
             guard let self else{return }
             self.movieGenre = genreData.genres
         }

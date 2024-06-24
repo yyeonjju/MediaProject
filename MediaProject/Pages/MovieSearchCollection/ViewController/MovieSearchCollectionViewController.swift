@@ -14,7 +14,7 @@ class MovieSearchCollectionViewController: UIViewController {
     // MARK: - Properties
     var searchedMovieData : MovieSearch? {
         didSet{
-            viewManager.movieCollectionView.reloadData()
+//            viewManager.movieCollectionView.reloadData()
         }
     }
     var page = 1
@@ -44,16 +44,17 @@ class MovieSearchCollectionViewController: UIViewController {
     
     // MARK: - APIFetch
     func getMovieSearchData() {
-        APIFetcher().getMovieSearchData(text: viewManager.movieSearchBar.text ?? "", page: page){ [weak self] movieData in
+        APIFetcher.shared.getMovieSearchData(text: viewManager.movieSearchBar.text ?? "", page: page){ [weak self] movieData in
             guard let self else{return }
             if page == 1 {
                 self.searchedMovieData = movieData
-                
+                viewManager.movieCollectionView.reloadData()
                 if !self.searchedMovieData!.results.isEmpty {
                     self.viewManager.movieCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
                 }
             }else {
                 self.searchedMovieData?.results.append(contentsOf: movieData.results)
+                viewManager.movieCollectionView.reloadData()
             }
 
             

@@ -14,7 +14,7 @@ class MovieSearchViewController: UIViewController {
     // MARK: - Properties
     var searchedMovieData : MovieSearch? {
         didSet{
-            viewManager.movieTableView.reloadData()
+//            viewManager.movieTableView.reloadData()
         }
     }
     
@@ -45,18 +45,22 @@ class MovieSearchViewController: UIViewController {
     
     // MARK: - APIFetch
     func getMovieSearchData() {
-        APIFetcher().getMovieSearchData(text: viewManager.movieSearchBar.text ?? "", page: page){ [weak self] movieData in
+        APIFetcher.shared.getMovieSearchData(text: viewManager.movieSearchBar.text ?? "", page: page){ [weak self] movieData in
             guard let self else{return }
+
             if page == 1 {
                 self.searchedMovieData = movieData
+                self.viewManager.movieTableView.reloadData()
                 
-                if !self.searchedMovieData!.results.isEmpty {
+                guard let searchedMovieData = self.searchedMovieData else {return }
+                if !searchedMovieData.results.isEmpty {
                     self.viewManager.movieTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
                 }
+                
             }else {
                 self.searchedMovieData?.results.append(contentsOf: movieData.results)
+                self.viewManager.movieTableView.reloadData()
             }
-
             
         }
     }
@@ -66,13 +70,14 @@ class MovieSearchViewController: UIViewController {
 
 extension MovieSearchViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchedMovieData?.results.count ?? 0
+        guard let searchedMovieData else {return 0}
+        return searchedMovieData.results.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchedMovieTableViewCell.identifier, for: indexPath) as! SearchedMovieTableViewCell
-        let rowData = searchedMovieData?.results[indexPath.row]
-        guard let rowData else {return cell}
+        guard let searchedMovieData else {return cell}
+        let rowData = searchedMovieData.results[indexPath.row]
         cell.configureData(data: rowData)
         return cell
     }
