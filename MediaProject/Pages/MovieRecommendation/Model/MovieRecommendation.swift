@@ -9,8 +9,8 @@ import Foundation
 
 
 //similar
-class MovieSimilar : MovieResultObject<MovieSimilarResult>{}
-class MovieSimilarResult : MovieResult {}
+//class MovieSimilar : MovieResultObject<MovieSimilarResult>{}
+//class MovieSimilarResult : MovieResult {}
 
 
 //recommendation

@@ -101,16 +101,11 @@ extension APIFetcher : APIFetchable{
         }
     }
     
-    func getSimilarMovieData(movieId : Int, handler: @escaping (MovieGenre) -> Void) {
-        let url = APIURL.tmbdSimilarMovieURL.replacingOccurrences(of: "{movieId}", with: String(movieId))
-        getSingle(model: MovieGenre.self, url: url, headers: tmdbBaseHeader){ value in
-            handler(value)
-        }
-    }
     
-    func getRecommendationMovieData(movieId : Int, handler: @escaping (MovieGenre) -> Void) {
-        let url = APIURL.tmbdRecommendationMovieURL.replacingOccurrences(of: "{movieId}", with: String(movieId))
-        getSingle(model: MovieGenre.self, url: url, headers: tmdbBaseHeader){ value in
+    
+    func getRecommendationMovieData(type: MovieRecommendationType, movieId : Int, handler: @escaping (MovieRecommendaion) -> Void) {
+        let url = APIURL.tmbdRecommendationMovieURL.replacingOccurrences(of: "{movieId}", with: String(movieId)).replacingOccurrences(of: "{recommendationType}", with: type.rawValue)
+        getSingle(model: MovieRecommendaion.self, url: url, headers: tmdbBaseHeader){ value in
             handler(value)
         }
     }

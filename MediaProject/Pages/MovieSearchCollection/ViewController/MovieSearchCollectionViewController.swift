@@ -76,6 +76,16 @@ extension MovieSearchCollectionViewController : UICollectionViewDelegate, UIColl
         cell.configureData(data: rowData)
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let searchedMovieData else {return }
+        let rowData = searchedMovieData.results[indexPath.row]
+        
+        let vc = MovieRecommendationViewController()
+        vc.movieId = rowData.id
+        vc.movieTitle = rowData.title
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension MovieSearchCollectionViewController : UICollectionViewDataSourcePrefetching {
