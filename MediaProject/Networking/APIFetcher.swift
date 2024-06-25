@@ -104,7 +104,7 @@ extension APIFetcher : APIFetchable{
     
     
     func getRecommendationMovieData(type: MovieRecommendationType, movieId : Int, handler: @escaping (MovieRecommendaion) -> Void) {
-        let url = APIURL.tmbdRecommendationMovieURL.replacingOccurrences(of: "{movieId}", with: String(movieId)).replacingOccurrences(of: "{recommendationType}", with: type.rawValue)
+        let url = APIURL.tmbdRecommendationMovieURL.replacingOccurrences(of: "{movieId}", with: String(movieId)).replacingOccurrences(of: "{recommendationType}", with: type.type)
         getSingle(model: MovieRecommendaion.self, url: url, headers: tmdbBaseHeader){ value in
             handler(value)
         }

@@ -1,5 +1,5 @@
 //
-//  MovieRecommendationView.swift
+//  MovieRecommendationCollectionViewCell.swift
 //  MediaProject
 //
 //  Created by 하연주 on 6/25/24.
@@ -8,13 +8,14 @@
 import UIKit
 import SnapKit
 
-final class MovieRecommendationView : UIView {
+
+final class MovieRecommendationCollectionViewCell : UICollectionViewCell {
     // MARK: - UI
-    let tableView = {
-        let tv = UITableView()
-        tv.rowHeight = 180
-        tv.backgroundColor = .black
-        return tv
+    let posterImageView : UIImageView = {
+        let iv = UIImageView()
+        iv.configureDefaultImageView()
+        iv.clipsToBounds = true
+        return iv
     }()
     
     // MARK: - Initializer
@@ -24,8 +25,6 @@ final class MovieRecommendationView : UIView {
         
         configureSubView()
         configureLayout()
-        
-        
     }
     
     required init?(coder: NSCoder) {
@@ -36,17 +35,16 @@ final class MovieRecommendationView : UIView {
     // MARK: - ConfigureUI
     
     func configureSubView() {
-        [tableView]
+        [posterImageView]
             .forEach{
-                addSubview($0)
+                contentView.addSubview($0)
             }
     }
     
     func configureLayout() {
-        tableView.snp.makeConstraints { make in
-            make.edges.equalTo(safeAreaLayoutGuide)
+        posterImageView.snp.makeConstraints { make in
+            make.edges.equalTo(contentView)
         }
     }
 
-    
 }
