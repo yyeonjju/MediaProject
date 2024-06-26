@@ -17,10 +17,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         //⭐️ 네비게이션 컨트롤러 생성
         let movieHomeView = UINavigationController(rootViewController: MovieHomeViewController())
-        let signupView = UINavigationController(rootViewController: SignupViewController())
+//        let signupView = UINavigationController(rootViewController: SignupViewController())
 //        let lotteryView = UINavigationController(rootViewController: LotteryViewController())
 //        let boxOffice = UINavigationController(rootViewController: BoxOfficeViewController())
-//        let trendView = UINavigationController(rootViewController: TrendViewController())
+        let trendView = UINavigationController(rootViewController: TrendViewController())
         let movieSearchView = UINavigationController(rootViewController: MovieSearchViewController())
         
         let movieSearchCollectionView = UINavigationController(rootViewController: MovieSearchCollectionViewController())
@@ -33,7 +33,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tabBarVC = UITabBarController()
         
         // 탭바로 사용하기 위한 뷰 컨트롤러들 설정
-        tabBarVC.setViewControllers([movieHomeView,signupView, movieSearchView, movieSearchCollectionView], animated: true)
+        tabBarVC.setViewControllers([movieHomeView,trendView, movieSearchView, movieSearchCollectionView], animated: true)
         tabBarVC.modalPresentationStyle = .fullScreen
         tabBarVC.tabBar.backgroundColor = .white
         
@@ -43,8 +43,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         items[0].title = "Home"
         items[0].image = UIImage(systemName: "house")
         
-        items[1].title = "signup"
-        items[1].image = UIImage(systemName: "person.fill")
+        items[1].title = "trend"
+        items[1].image = UIImage(systemName: "star.fill")
 
 //        items[2].title = "lottery"
 //        items[2].image = UIImage(systemName: "book.fill")

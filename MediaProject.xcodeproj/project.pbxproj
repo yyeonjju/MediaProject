@@ -63,6 +63,7 @@
 		7D9B9F6E2C11FE4C002C577B /* ReuseIdentifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9B9F6D2C11FE4C002C577B /* ReuseIdentifierProtocol.swift */; };
 		7D9B9F712C12C89A002C577B /* BoxOffice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9B9F702C12C89A002C577B /* BoxOffice.swift */; };
 		7D9B9F732C12D116002C577B /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9B9F722C12D116002C577B /* Dictionary+Extension.swift */; };
+		7DC994F72C2C2E3B00F44AFE /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DC994F62C2C2E3B00F44AFE /* NetworkRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -121,6 +122,7 @@
 		7D9B9F6D2C11FE4C002C577B /* ReuseIdentifierProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifierProtocol.swift; sourceTree = "<group>"; };
 		7D9B9F702C12C89A002C577B /* BoxOffice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOffice.swift; sourceTree = "<group>"; };
 		7D9B9F722C12D116002C577B /* Dictionary+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
+		7DC994F62C2C2E3B00F44AFE /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -511,6 +513,7 @@
 			isa = PBXGroup;
 			children = (
 				7D9B9F4E2C11CCFF002C577B /* APIFetcher.swift */,
+				7DC994F62C2C2E3B00F44AFE /* NetworkRequest.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -696,6 +699,7 @@
 				7D2117B42C17199C0080ED90 /* TrendTableViewCell.swift in Sources */,
 				7D2117DE2C188B060080ED90 /* SearchedMovieTableViewCell.swift in Sources */,
 				7D2117C42C17486F0080ED90 /* MovieCreditView.swift in Sources */,
+				7DC994F72C2C2E3B00F44AFE /* NetworkRequest.swift in Sources */,
 				7D893B1E2C19A172003D552E /* MovieSearchCollectionView.swift in Sources */,
 				7D9B9F4C2C1199FA002C577B /* LotteryViewController+Picker.swift in Sources */,
 				7D9B9F552C11D121002C577B /* Lotto.swift in Sources */,

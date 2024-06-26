@@ -22,20 +22,20 @@ class APIFetcher {
     static let shared = APIFetcher()
     private init(){}
     
-    let tmdbBaseHeader  : HTTPHeaders = [
-        "Authorization" : "Bearer \(APIKey.tmdbAccessToken)",
-        "accept" : "application/json"
-    ]
-    
     func getSingle<T : Decodable>(
         model : T.Type,
-        url : String,
-        headers : HTTPHeaders = [],
+        requestType : NetworkRequest,
         completionHandler : @escaping (T) -> Void,
         errorHandler : @escaping ()->Void = {}
     ) {
-        print("url❤️", url)
-        AF.request(url, method: .get, headers: headers)
+        
+        AF.request(
+            requestType.endpoint,
+            method: requestType.method,
+            parameters: requestType.parameters,
+            encoding : requestType.encoding,
+            headers: requestType.headers
+        )
 //            .responseString{ data in
 //                print(data)
 //            }
@@ -57,12 +57,15 @@ class APIFetcher {
 
 extension APIFetcher : APIFetchable{
     func getLottoInfo(episode : Int, handler: @escaping (Lotto?) -> Void) {
+        /*
         getSingle(model: Lotto.self, url: "\(APIURL.lottoURL)\(episode)"){ value in
             handler(value)
         }
+         */
     }
     
     func getBoxOfficeData(targetDate: String, handler: @escaping (BoxOffice) -> Void, errorHandler : @escaping ()->Void) {
+        /*
         let queryParamDictionary = ["key":APIKey.koficKey, "targetDt":targetDate]
         
         getSingle(model: BoxOffice.self, url: "\(APIURL.boxofficeURL)\(queryParamDictionary.queryString)"){ value in
@@ -70,33 +73,35 @@ extension APIFetcher : APIFetchable{
         } errorHandler: {
             errorHandler()
         }
+        */
     }
     
     func getMovieTrendData(handler: @escaping (MovieTrend) -> Void) {
-        getSingle(model: MovieTrend.self, url: APIURL.tmdbMovietTrendURL, headers: tmdbBaseHeader){ value in
+        let requestType = NetworkRequest.getMovieTrendData
+        getSingle(model: MovieTrend.self,requestType : requestType){ value in
             handler(value)
         }
     }
     
     func getMovieCreditData(movieID : Int, handler: @escaping (MovieCredit) -> Void) {
-        
-        getSingle(model: MovieCredit.self, url: "\(APIURL.tmdbMovieCreditURL)\(movieID)/credits", headers: tmdbBaseHeader){ value in
+        let requestType = NetworkRequest.getMovieCreditData(movieId: String(movieID))
+        getSingle(model: MovieCredit.self, requestType : requestType){ value in
             handler(value)
         }
     }
     
     
     func getMovieGenreData(handler: @escaping (MovieGenre) -> Void) {
-        getSingle(model: MovieGenre.self, url: "\(APIURL.tmdbMovieGenreURL)", headers: tmdbBaseHeader){ value in
+        let requestType = NetworkRequest.getMovieGenreData
+        getSingle(model: MovieGenre.self,requestType : requestType){ value in
             handler(value)
         }
     }
     
     
     func getMovieSearchData(text : String, page : Int, handler: @escaping (MovieSearch) -> Void) {
-        let queryParamDictionary = ["query": text, "page" : String(page)]
-        
-        getSingle(model: MovieSearch.self, url: "\(APIURL.tmbdMovieSearchURL)\(queryParamDictionary.queryString)", headers: tmdbBaseHeader){ value in
+        let requestType = NetworkRequest.getMovieSearchData(query: text, page: String(page))
+        getSingle(model: MovieSearch.self, requestType : requestType){ value in
             handler(value)
         }
     }
@@ -104,8 +109,8 @@ extension APIFetcher : APIFetchable{
     
     
     func getRecommendationMovieData(type: MovieRecommendationType, movieId : Int, handler: @escaping (MovieRecommendaion) -> Void) {
-        let url = APIURL.tmbdRecommendationMovieURL.replacingOccurrences(of: "{movieId}", with: String(movieId)).replacingOccurrences(of: "{recommendationType}", with: type.type)
-        getSingle(model: MovieRecommendaion.self, url: url, headers: tmdbBaseHeader){ value in
+        let requestType = NetworkRequest.getRecommendationMovieData(movieId: String(movieId), recommendationType: type.typeString)
+        getSingle(model: MovieRecommendaion.self, requestType : requestType){ value in
             handler(value)
         }
     }

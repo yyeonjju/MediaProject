@@ -12,7 +12,7 @@ enum MovieRecommendationType : Int {
     case similar
     case recommendations
     
-    var type : String {
+    var typeString : String {
         get{
             switch self {
             case .similar:
