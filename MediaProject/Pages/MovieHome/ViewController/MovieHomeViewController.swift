@@ -7,141 +7,71 @@
 
 import UIKit
 import SnapKit
-
-
+import Kingfisher
 
 class MovieHomeViewController: UIViewController {
-
-    let mainImageView : UIImageView = {
-        let imageView = UIImageView()
-        imageView.configureDefaultImageView()
-        return imageView
-    }()
+    // MARK: - UI
+    let viewManager = MovieHomeView()
     
-    let playButton : UIButton = {
-        let button = UIButton()
-        button.setTitle("재생", for: .normal)
-        button.setImage(UIImage(systemName: "play.fill"), for: .normal)
-        button.backgroundColor = .white
-        button.setTitleColor(.black, for: .normal)
-        button.tintColor = .black
-        button.makeBorderRadius(radius: 5, width: 0)
-        return button
-    }()
-    
-    let goTolistButton : UIButton = {
-        let button = UIButton()
-        button.setTitle("내가 찜한 리스트", for: .normal)
-        button.setImage(UIImage(systemName: "plus"), for: .normal)
-        button.backgroundColor = .black
-        button.makeBorderRadius(radius: 5, width: 0)
-        button.tintColor = .white
-        return button
-    }()
-    
-    lazy var buttonsStackView : UIStackView = {
-       let sv = UIStackView(arrangedSubviews: [playButton, goTolistButton])
-        sv.axis = .horizontal
-        sv.distribution = .fillEqually
-        sv.alignment = .center
-        sv.spacing = 10
-        return sv
-    }()
+    // MARK: - Properties
+    var upcomingMovieData : UpcomingMovie? {
+        didSet {
+            guard let upcomingMovieData, !upcomingMovieData.results.isEmpty else {return }
+            let firstMovie = upcomingMovieData.results[0]
+            let url = URL(string: "\(APIURL.tmdbImagePrefixURL)\(firstMovie.poster_path)")
+            viewManager.mainImageView.kf.setImage(with: url)
+            
+            viewManager.upcomingMovieCollectionView.reloadData()
+        }
+    }
 
     
-    let firstContentImage : UIImageView = {
-        let imageView = UIImageView()
-        imageView.configureDefaultImageView()
-        return imageView
-    }()
-    
-    let secondContentImage : UIImageView = {
-        let imageView = UIImageView()
-        imageView.configureDefaultImageView()
-        return imageView
-    }()
-    
-    let thirdContentImage : UIImageView = {
-        let imageView = UIImageView()
-        imageView.configureDefaultImageView()
-        return imageView
-    }()
-    
-    private lazy var imageStackView : UIStackView = {
-        let sv = UIStackView(arrangedSubviews: [firstContentImage, secondContentImage, thirdContentImage])
-        sv.axis = .horizontal
-        sv.distribution = .fillEqually
-        sv.spacing = 5
-        sv.alignment = .leading
-        return sv
-    }()
-    
-    let smallImageHeight = 150
+    // MARK: - Lifecycle
+    override func loadView() {
+        view = viewManager
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        navigationItem.title = "곧 개봉될 영화"
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         setupBackgroundColor()
-        
-        setupAddSubView()
-        setupLayout()
+        viewManager.upcomingMovieCollectionView.backgroundColor = .black
+        getUpcomingMovie()
+        setupDelegate()
     }
     
-    // MARK: - Layout
-    private func setupAddSubView() {
-        view.addSubview(mainImageView)
-        view.addSubview(imageStackView)
-        view.addSubview(buttonsStackView)
-        
-        mainImageView.addSubview(buttonsStackView)
+    // MARK: - SetupDelegate
+    private func setupDelegate() {
+        viewManager.upcomingMovieCollectionView.dataSource = self
+        viewManager.upcomingMovieCollectionView.delegate = self
+        viewManager.upcomingMovieCollectionView.register(UpcomingMovieCollectionViewCell.self, forCellWithReuseIdentifier: UpcomingMovieCollectionViewCell.identifier)
+    }
+    
+    
+    // MARK: - APIFetch
+    private func getUpcomingMovie() {
+        APIFetcher.shared.getUpcomingMovieData() { [weak self] value in
+            guard let self else {return }
+            
+            self.upcomingMovieData = value
+        }
+    }
+}
 
-    }
-    
-    private func setupLayout() {
-        mainImageView.snp.makeConstraints { make in
-            make.horizontalEdges.equalToSuperview().inset(20)
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(30)
-            make.centerX.equalTo(view)
-            make.height.equalTo(450)
-        }
-        
-        firstContentImage.snp.makeConstraints { make in
-            make.height.equalTo(smallImageHeight)
-        }
-        
-        secondContentImage.snp.makeConstraints { make in
-            make.height.equalTo(smallImageHeight)
-        }
-        
-        thirdContentImage.snp.makeConstraints { make in
-            make.height.equalTo(smallImageHeight)
-        }
-        
-        imageStackView.snp.makeConstraints { make in
-            make.horizontalEdges.equalTo(view).inset(20)
-            make.top.equalTo(mainImageView.snp.bottom).offset(10)
-            make.bottom.equalTo(view).offset(10)
-        }
-        
-        
-        playButton.snp.makeConstraints { make in
-            make.height.equalTo(40)
-        }
-        
-        goTolistButton.snp.makeConstraints { make in
-            make.height.equalTo(40)
-        }
-        
-        buttonsStackView.snp.makeConstraints { make in
-            make.horizontalEdges.equalToSuperview().inset(20)
-            make.bottom.equalToSuperview().inset(20)
-        }
-    
-        
-    }
-    
-    
-    
 
+extension MovieHomeViewController : UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UpcomingMovieCollectionViewCell.identifier, for: indexPath) as! UpcomingMovieCollectionViewCell
+        guard var upcomingMovieData else {return cell}
+        upcomingMovieData.results.removeFirst()
+        let data = upcomingMovieData.results[indexPath.row]
+        cell.configureData(data: data)
+        return cell
+    }
 }

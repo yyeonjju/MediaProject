@@ -15,6 +15,7 @@ protocol APIFetchable {
     func getMovieCreditData(movieID : Int, handler: @escaping (MovieCredit) -> Void) -> Void
     func getMovieGenreData(handler : @escaping (MovieGenre)->Void) -> Void
     func getMovieSearchData(text : String, page: Int, handler : @escaping (MovieSearch)->Void) -> Void
+    func getUpcomingMovieData( handler: @escaping (UpcomingMovie) -> Void)
 }
 
 
@@ -111,6 +112,13 @@ extension APIFetcher : APIFetchable{
     func getRecommendationMovieData(type: MovieRecommendationType, movieId : Int, handler: @escaping (MovieRecommendaion) -> Void) {
         let requestType = NetworkRequest.getRecommendationMovieData(movieId: String(movieId), recommendationType: type.typeString)
         getSingle(model: MovieRecommendaion.self, requestType : requestType){ value in
+            handler(value)
+        }
+    }
+    
+    func getUpcomingMovieData(handler: @escaping (UpcomingMovie) -> Void) {
+        let requestType = NetworkRequest.getUpcomingMovieData
+        getSingle(model: UpcomingMovie.self, requestType : requestType){ value in
             handler(value)
         }
     }

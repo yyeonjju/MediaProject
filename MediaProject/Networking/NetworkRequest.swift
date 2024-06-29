@@ -17,13 +17,14 @@ enum NetworkRequest {
     case getMovieGenreData
     case getMovieSearchData(query : String, page : String)
     case getRecommendationMovieData(movieId : String, recommendationType : String)
+    case getUpcomingMovieData
     
     
     
     
     private var baseURL : String{
         switch self {
-        case .getMovieTrendData,.getMovieCreditData, .getMovieGenreData, .getMovieSearchData, .getRecommendationMovieData :
+        case .getMovieTrendData,.getMovieCreditData, .getMovieGenreData, .getMovieSearchData, .getRecommendationMovieData, .getUpcomingMovieData :
             return "\(APIURL.scheme)://\(APIURL.tmdbHost)/\(APIURL.tmdbVersion)/"
         }
     }
@@ -40,12 +41,14 @@ enum NetworkRequest {
             return baseURL + "search/movie"
         case .getRecommendationMovieData(let movieId, let recommendationType):
             return baseURL + "movie/\(movieId)/\(recommendationType)"
+        case .getUpcomingMovieData :
+            return baseURL + "movie/upcoming"
         }
     }
     
     var method : HTTPMethod {
         switch self {
-        case .getMovieTrendData,.getMovieCreditData, .getMovieGenreData, .getMovieSearchData, .getRecommendationMovieData :
+        case .getMovieTrendData,.getMovieCreditData, .getMovieGenreData, .getMovieSearchData, .getRecommendationMovieData, .getUpcomingMovieData :
             return .get
         }
         
@@ -53,7 +56,7 @@ enum NetworkRequest {
     
     var parameters : Parameters {
         switch self {
-        case .getMovieTrendData,.getMovieCreditData, .getMovieGenreData, .getRecommendationMovieData :
+        case .getMovieTrendData,.getMovieCreditData, .getMovieGenreData, .getRecommendationMovieData, .getUpcomingMovieData :
             return [:]
         case .getMovieSearchData(let query, let page) :
             return[
@@ -65,7 +68,7 @@ enum NetworkRequest {
     
     var encoding : URLEncoding {
         switch self {
-        case .getMovieTrendData,.getMovieCreditData, .getMovieGenreData, .getRecommendationMovieData :
+        case .getMovieTrendData,.getMovieCreditData, .getMovieGenreData, .getRecommendationMovieData, .getUpcomingMovieData :
             return .default
         case .getMovieSearchData:
             return URLEncoding(destination: .queryString)
@@ -74,7 +77,7 @@ enum NetworkRequest {
     
     var headers : HTTPHeaders {
         switch self {
-        case .getMovieTrendData,.getMovieCreditData, .getMovieGenreData, .getMovieSearchData, .getRecommendationMovieData:
+        case .getMovieTrendData,.getMovieCreditData, .getMovieGenreData, .getMovieSearchData, .getRecommendationMovieData, .getUpcomingMovieData:
             return [
                 "Authorization" : "Bearer \(APIKey.tmdbAccessToken)",
                 "accept" : "application/json"

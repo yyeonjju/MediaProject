@@ -35,6 +35,7 @@ class TrendViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = "지금 핫한 영화"
         setupDelegate()
         getMovieGenreData()
     }
