@@ -35,14 +35,14 @@ final class MovieRecommendationView : UIView {
     
     // MARK: - ConfigureUI
     
-    func configureSubView() {
+    private func configureSubView() {
         [tableView]
             .forEach{
                 addSubview($0)
             }
     }
     
-    func configureLayout() {
+    private func configureLayout() {
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(safeAreaLayoutGuide)
         }

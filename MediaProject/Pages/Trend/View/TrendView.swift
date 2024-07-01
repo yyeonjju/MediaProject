@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class TrendView: UIView {
+final class TrendView: UIView {
     // MARK: - UI
     let trendListTableView : UITableView = {
         let tv = UITableView()
@@ -34,14 +34,14 @@ class TrendView: UIView {
     
     // MARK: - ConfigureUI
     
-    func configureSubView() {
+    private func configureSubView() {
         [trendListTableView]
             .forEach{
                 addSubview($0)
             }
     }
     
-    func configureLayout() {
+    private func configureLayout() {
         trendListTableView.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview().inset(10)
             make.verticalEdges.equalTo(safeAreaLayoutGuide)

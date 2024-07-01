@@ -19,7 +19,7 @@ protocol APIFetchable {
 }
 
 
-class APIFetcher {
+final class APIFetcher {
     static let shared = APIFetcher()
     private init(){}
     

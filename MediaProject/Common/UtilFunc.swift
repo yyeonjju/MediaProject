@@ -7,7 +7,7 @@
 
 import UIKit
 
-internal func configureCollectionVewLayout (numberofItemInrow : Int, cellIneterSpacing : CGFloat = 10, sectionSpacing :  CGFloat = 30, height: CGFloat? = nil) -> UICollectionViewLayout{
+func configureCollectionVewLayout (numberofItemInrow : Int, cellIneterSpacing : CGFloat = 10, sectionSpacing :  CGFloat = 30, height: CGFloat? = nil) -> UICollectionViewLayout{
     let layout = UICollectionViewFlowLayout()
     let numberofItemInrow : CGFloat = CGFloat(numberofItemInrow)
     

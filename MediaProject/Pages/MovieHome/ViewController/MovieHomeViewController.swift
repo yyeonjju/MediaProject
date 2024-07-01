@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class MovieHomeViewController: UIViewController {
+final class MovieHomeViewController: UIViewController {
     // MARK: - UI
     let viewManager = MovieHomeView()
     

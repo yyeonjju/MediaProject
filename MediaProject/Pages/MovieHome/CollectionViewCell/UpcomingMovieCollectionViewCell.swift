@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class UpcomingMovieCollectionViewCell : UICollectionViewCell {
+final class UpcomingMovieCollectionViewCell : UICollectionViewCell {
     // MARK: - UI
     private let imageView : UIImageView = {
         let iv = UIImageView()
@@ -38,14 +38,14 @@ class UpcomingMovieCollectionViewCell : UICollectionViewCell {
     
     // MARK: - ConfigureUI
     
-    func configureSubView() {
+    private func configureSubView() {
         [imageView]
             .forEach{
                 contentView.addSubview($0)
             }
     }
     
-    func configureLayout() {
+    private func configureLayout() {
         imageView.snp.makeConstraints { make in
             make.edges.equalTo(contentView)
         }

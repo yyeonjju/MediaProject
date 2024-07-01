@@ -8,23 +8,23 @@
 import UIKit
 import Kingfisher
 
-class TrendTableViewCell: UITableViewCell {
+final class TrendTableViewCell: UITableViewCell {
     // MARK: - UI
-    let dateLabel : UILabel = {
+    private let dateLabel : UILabel = {
         let label = UILabel()
         label.configureSubLabel()
         label.text = "00/00/0000"
         return label
     }()
     
-    let genreLabel : UILabel = {
+    private let genreLabel : UILabel = {
         let label = UILabel()
         label.configureTitleLabel()
         label.text = "#Mystery"
         return label
     }()
     
-    let cardContentView : UIView = {
+    private let cardContentView : UIView = {
         let view = UIView()
         view.layer.cornerRadius = 10
         view.layer.borderColor = UIColor.lightGray.cgColor
@@ -34,7 +34,7 @@ class TrendTableViewCell: UITableViewCell {
         return view
     }()
     
-    let mainImageView : UIImageView = {
+    private let mainImageView : UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .gray
         iv.clipsToBounds = true //why??
@@ -42,35 +42,35 @@ class TrendTableViewCell: UITableViewCell {
         return iv
     }()
     
-    let bottomLabelGroupView : UIView = {
+    private let bottomLabelGroupView : UIView = {
        let view = UIView()
         return view
     }()
     
-    let titleLabel : UILabel = {
+    private let titleLabel : UILabel = {
         let label = UILabel()
         label.configureTitleLabel()
         label.text = "영화제목"
         return label
     }()
     
-    let overViewLabel : UILabel = {
+    private let overViewLabel : UILabel = {
         let label = UILabel()
         label.configureSubLabel()
         label.text = "A mild-mannered professor moonlighting as a fake hit man in police stings ignites a chain reaction of trouble when he falls for a potential client."
         return label
     }()
     
-    let separator = Separator(color: .gray)
+    private let separator = Separator(color: .gray)
     
-    let showDetailLabel : UILabel = {
+    private let showDetailLabel : UILabel = {
         let label = UILabel()
         label.text = "자세히 보기"
         label.configureSubLabel()
         return label
     }()
     
-    let arrowImageView : UIImageView = {
+    private let arrowImageView : UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(systemName: "chevron.right")
         iv.tintColor = .lightGray
@@ -104,7 +104,7 @@ class TrendTableViewCell: UITableViewCell {
     
     // MARK: - ConfigureUI
     
-    func configureSubView() {
+    private func configureSubView() {
         [dateLabel, genreLabel,cardContentView]
             .forEach{
                 contentView.addSubview($0)
@@ -121,7 +121,7 @@ class TrendTableViewCell: UITableViewCell {
             }
     }
     
-    func configureLayout() {
+    private func configureLayout() {
         dateLabel.snp.makeConstraints { make in
             make.top.leading.equalTo(contentView)
             

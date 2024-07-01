@@ -15,7 +15,7 @@ class MovieHomeView : UIView {
         return imageView
     }()
     
-    let playButton : UIButton = {
+    private let playButton : UIButton = {
         let button = UIButton()
         button.setTitle("재생", for: .normal)
         button.setImage(UIImage(systemName: "play.fill"), for: .normal)
@@ -26,7 +26,7 @@ class MovieHomeView : UIView {
         return button
     }()
     
-    let goTolistButton : UIButton = {
+    private let goTolistButton : UIButton = {
         let button = UIButton()
         button.setTitle("내가 찜한 리스트", for: .normal)
         button.setImage(UIImage(systemName: "plus"), for: .normal)
@@ -36,7 +36,7 @@ class MovieHomeView : UIView {
         return button
     }()
     
-    lazy var buttonsStackView : UIStackView = {
+    lazy private var buttonsStackView : UIStackView = {
        let sv = UIStackView(arrangedSubviews: [playButton, goTolistButton])
         sv.axis = .horizontal
         sv.distribution = .fillEqually

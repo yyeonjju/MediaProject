@@ -8,7 +8,7 @@
 import UIKit
 import Alamofire
 
-class TrendViewController: UIViewController {
+final class TrendViewController: UIViewController {
     
     // MARK: - UI
     let viewManager = TrendView()

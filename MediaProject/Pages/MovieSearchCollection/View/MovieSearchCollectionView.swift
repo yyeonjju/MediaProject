@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class MovieSearchCollectionView: UIView {
+final class MovieSearchCollectionView: UIView {
 
     // MARK: - UI
     let movieSearchBar = UISearchBar()

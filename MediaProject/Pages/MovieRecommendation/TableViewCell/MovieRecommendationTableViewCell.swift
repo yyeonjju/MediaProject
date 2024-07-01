@@ -45,14 +45,14 @@ final class MovieRecommendationTableViewCell : UITableViewCell {
     
     // MARK: - ConfigureUI
     
-    func configureSubView() {
+    private func configureSubView() {
         [sectionTitleLabel, collectionView]
             .forEach{
                 contentView.addSubview($0)
             }
     }
     
-    func configureLayout() {
+    private func configureLayout() {
         sectionTitleLabel.snp.makeConstraints { make in
             make.top.leading.equalTo(contentView).offset(4)
             make.height.equalTo(22)

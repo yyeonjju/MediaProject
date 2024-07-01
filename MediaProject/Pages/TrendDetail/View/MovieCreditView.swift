@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class MovieCreditView: UIView {
+final class MovieCreditView: UIView {
     // MARK: - UI
     let titleLabel : UILabel = {
         let label = UILabel()
@@ -46,14 +46,14 @@ class MovieCreditView: UIView {
     
     // MARK: - ConfigureUI
     
-    func configureSubView() {
+    private func configureSubView() {
         [titleLabel, overviewLabel, castTableView]
             .forEach{
                 addSubview($0)
             }
     }
     
-    func configureLayout() {
+    private func configureLayout() {
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide).offset(20)
             make.leading.equalToSuperview()

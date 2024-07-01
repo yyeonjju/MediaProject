@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TrendDetailViewController: UIViewController {
+final class TrendDetailViewController: UIViewController {
     // MARK: - UI
     let viewManager = MovieCreditView()
 

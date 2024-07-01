@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MovieSearchCollectionViewCell: UICollectionViewCell {
+final class MovieSearchCollectionViewCell: UICollectionViewCell {
     // MARK: - UI
     let movieImageView : UIImageView = {
         let iv = UIImageView()

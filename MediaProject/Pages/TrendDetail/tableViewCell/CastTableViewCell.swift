@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class CastTableViewCell: UITableViewCell {
+final class CastTableViewCell: UITableViewCell {
     
     // MARK: - UI
     private let profileImageView : UIImageView = {

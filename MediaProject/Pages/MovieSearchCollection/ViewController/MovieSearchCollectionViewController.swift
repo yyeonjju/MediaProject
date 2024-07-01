@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MovieSearchCollectionViewController: UIViewController {
+final class MovieSearchCollectionViewController: UIViewController {
     // MARK: - UI
     let viewManager = MovieSearchCollectionView()
     
