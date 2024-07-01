@@ -23,6 +23,9 @@
 		7D2117DB2C1889FA0080ED90 /* MovieSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2117DA2C1889FA0080ED90 /* MovieSearchView.swift */; };
 		7D2117DE2C188B060080ED90 /* SearchedMovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2117DD2C188B060080ED90 /* SearchedMovieTableViewCell.swift */; };
 		7D2117E02C18913A0080ED90 /* MovieSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D2117DF2C1891390080ED90 /* MovieSearchResult.swift */; };
+		7D7158272C32D8C9006496BA /* NasaImageLoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7158262C32D8C9006496BA /* NasaImageLoadViewController.swift */; };
+		7D7158292C32D903006496BA /* NasaImageLoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7158282C32D903006496BA /* NasaImageLoadView.swift */; };
+		7D71582E2C32E142006496BA /* NasaImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D71582D2C32E142006496BA /* NasaImageCollectionViewCell.swift */; };
 		7D76345F2C29909200319D37 /* MovieRecommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D76345E2C29909200319D37 /* MovieRecommendation.swift */; };
 		7D79C5FD2C2AB58A000350E2 /* MovieRecommendationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D79C5FC2C2AB58A000350E2 /* MovieRecommendationViewController.swift */; };
 		7D79C6002C2AC615000350E2 /* MovieRecommendationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D79C5FF2C2AC615000350E2 /* MovieRecommendationView.swift */; };
@@ -89,6 +92,9 @@
 		7D2117DA2C1889FA0080ED90 /* MovieSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchView.swift; sourceTree = "<group>"; };
 		7D2117DD2C188B060080ED90 /* SearchedMovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedMovieTableViewCell.swift; sourceTree = "<group>"; };
 		7D2117DF2C1891390080ED90 /* MovieSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchResult.swift; sourceTree = "<group>"; };
+		7D7158262C32D8C9006496BA /* NasaImageLoadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaImageLoadViewController.swift; sourceTree = "<group>"; };
+		7D7158282C32D903006496BA /* NasaImageLoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaImageLoadView.swift; sourceTree = "<group>"; };
+		7D71582D2C32E142006496BA /* NasaImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		7D76345E2C29909200319D37 /* MovieRecommendation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRecommendation.swift; sourceTree = "<group>"; };
 		7D79C5FC2C2AB58A000350E2 /* MovieRecommendationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRecommendationViewController.swift; sourceTree = "<group>"; };
 		7D79C5FF2C2AC615000350E2 /* MovieRecommendationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRecommendationView.swift; sourceTree = "<group>"; };
@@ -285,6 +291,40 @@
 			path = TableViewCell;
 			sourceTree = "<group>";
 		};
+		7D7158232C32D875006496BA /* NasaImageLoad */ = {
+			isa = PBXGroup;
+			children = (
+				7D71582A2C32E116006496BA /* CollectionViewCell */,
+				7D7158252C32D88D006496BA /* View */,
+				7D7158242C32D883006496BA /* ViewController */,
+			);
+			path = NasaImageLoad;
+			sourceTree = "<group>";
+		};
+		7D7158242C32D883006496BA /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7D7158262C32D8C9006496BA /* NasaImageLoadViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		7D7158252C32D88D006496BA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7D7158282C32D903006496BA /* NasaImageLoadView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7D71582A2C32E116006496BA /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				7D71582D2C32E142006496BA /* NasaImageCollectionViewCell.swift */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
 		7D76345C2C29907000319D37 /* MovieRecommendation */ = {
 			isa = PBXGroup;
 			children = (
@@ -399,6 +439,7 @@
 		7D9B9EDA2C0EFD3B002C577B /* MediaProject */ = {
 			isa = PBXGroup;
 			children = (
+				7D7158232C32D875006496BA /* NasaImageLoad */,
 				7D9B9F6C2C11FE34002C577B /* Protocol */,
 				7D9B9F5D2C11F0A4002C577B /* Common */,
 				7D9B9F4D2C11CC19002C577B /* Networking */,
@@ -745,6 +786,7 @@
 				7DF5F8D62C306B3B00D368A9 /* TabBarProtocol.swift in Sources */,
 				7D9B9F002C0F029B002C577B /* SignTextField.swift in Sources */,
 				7D9B9F712C12C89A002C577B /* BoxOffice.swift in Sources */,
+				7D7158272C32D8C9006496BA /* NasaImageLoadViewController.swift in Sources */,
 				7D9B9EE02C0EFD3B002C577B /* ViewController.swift in Sources */,
 				7D9B9F4F2C11CCFF002C577B /* APIFetcher.swift in Sources */,
 				7D9B9F052C0F1DCE002C577B /* UIImageView+Extension.swift in Sources */,
@@ -772,10 +814,12 @@
 				7D9B9F682C11FD64002C577B /* BoxOfficeViewController+TableView.swift in Sources */,
 				7D9B9F6B2C11FDE7002C577B /* BoxOfficeTableViewCell.swift in Sources */,
 				7DF5F8CB2C30436300D368A9 /* UpcomingMovieCollectionViewCell.swift in Sources */,
+				7D71582E2C32E142006496BA /* NasaImageCollectionViewCell.swift in Sources */,
 				7D2117C12C1745690080ED90 /* MovieCreditModel.swift in Sources */,
 				7D9B9EFB2C0F0068002C577B /* ViewController+Extension.swift in Sources */,
 				7D9B9F072C0F37AC002C577B /* UIButton+Extension.swift in Sources */,
 				7D9B9F732C12D116002C577B /* Dictionary+Extension.swift in Sources */,
+				7D7158292C32D903006496BA /* NasaImageLoadView.swift in Sources */,
 				7D9B9EDC2C0EFD3B002C577B /* AppDelegate.swift in Sources */,
 				7D2117DB2C1889FA0080ED90 /* MovieSearchView.swift in Sources */,
 				7D9B9F6E2C11FE4C002C577B /* ReuseIdentifierProtocol.swift in Sources */,
