@@ -9,12 +9,14 @@ import UIKit
 import SnapKit
 
 final class NasaImageLoadView : UIView {
+
+    
     // MARK: - UI
     let requestButton = {
        let btn = UIButton()
         btn.makeBorderRadius(radius: 20, width: btn.bounds.width)
         btn.setTitle("이미지 요청", for: .normal)
-        btn.backgroundColor = .cyan
+        btn.backgroundColor = .blue
         return btn
     }()
     
